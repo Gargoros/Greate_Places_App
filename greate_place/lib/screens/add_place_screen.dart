@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import '../widgets/image_input.dart';
 
 class AddPlaceScreen extends StatefulWidget {
   static const routeName = 'add-place';
+
   const AddPlaceScreen({super.key});
 
   @override
@@ -10,12 +12,6 @@ class AddPlaceScreen extends StatefulWidget {
 
 class _AddPlaceScreenState extends State<AddPlaceScreen> {
   final _titleController = TextEditingController();
-
-  @override
-  void dispose() {
-    _titleController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +32,12 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                     TextField(
                       decoration: InputDecoration(labelText: "Title"),
                       controller: _titleController,
+                      onSubmitted: (_) => {},
                     ),
-                    TextField(),
-                    TextField(),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    ImageInput(),
                   ],
                 ),
               ),
