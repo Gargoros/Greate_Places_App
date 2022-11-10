@@ -53,5 +53,10 @@
 	<string>We need take a picture from camera</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>We need take a picture from video</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Need to get yuor location!</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Need to get yuor location</string>
+
 </dict>
 </plist>
