@@ -13,3 +13,4 @@
 # greate_place/ios/Podfile.lock
 # greate_place/ios/Podfile
 # greate_place/pubspec.lock
+greate_place/lib/helpers/location_api_key.dart
