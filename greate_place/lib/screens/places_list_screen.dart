@@ -31,19 +31,23 @@ class PlacesListScreen extends StatelessWidget {
                     child: Center(
                       child: Text("Got no places yet, start adding some!"),
                     ),
-                    builder: (context, greatPlace, ch) =>
-                        greatPlace.items.length <= 0
-                            ? ch!
-                            : ListView.builder(
-                                itemCount: greatPlace.items.length,
-                                itemBuilder: (context, index) => ListTile(
-                                  leading: CircleAvatar(
-                                    backgroundImage: FileImage(
-                                        greatPlace.items[index].image),
-                                  ),
-                                  title: Text(greatPlace.items[index].title),
-                                  onTap: () {},
-                                ),
-                              )))));
+                    builder: (context, greatPlace, ch) => greatPlace
+                                .items.length <=
+                            0
+                        ? ch!
+                        : ListView.builder(
+                            itemCount: greatPlace.items.length,
+                            itemBuilder: (context, index) => ListTile(
+                              leading: CircleAvatar(
+                                backgroundImage:
+                                    FileImage(greatPlace.items[index].image),
+                              ),
+                              title: Text(greatPlace.items[index].title),
+                              subtitle: Text(
+                                  greatPlace.items[index].location!.address ??
+                                      ""),
+                              onTap: () {},
+                            ),
+                          )))));
   }
 }
