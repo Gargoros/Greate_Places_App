@@ -18,17 +18,42 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
+  LatLng? _pickedLocation;
+
+  void _selectLocation(LatLng position) {
+    setState(() {
+      _pickedLocation = position;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("You Map"),
+        actions: <Widget>[
+          if (widget.isSelecting)
+            IconButton(
+                onPressed: _pickedLocation == null
+                    ? null
+                    : () {
+                        Navigator.of(context).pop(_pickedLocation);
+                      },
+                icon: Icon(Icons.check))
+        ],
       ),
       body: FlutterMap(
         options: MapOptions(
           center: LatLng(widget.initialLocation.latitude,
               widget.initialLocation.longitude),
           zoom: 13,
+          onLongPress: widget.isSelecting
+              ? (tapPosition, point) {
+                  setState(() {
+                    _pickedLocation = point;
+                  });
+                }
+              : null,
         ),
         children: [
           TileLayer(
@@ -39,6 +64,19 @@ class _MapScreenState extends State<MapScreen> {
               'id': 'mapbox.mapbox-streets-v8'
             },
           ),
+          MarkerLayer(
+            markers: _pickedLocation == null
+                ? []
+                : [
+                    Marker(
+                      point: _pickedLocation!,
+                      builder: (ctx) => Icon(
+                        Icons.location_on_sharp,
+                        size: 50,
+                      ),
+                    ),
+                  ],
+          )
         ],
       ),
     );
