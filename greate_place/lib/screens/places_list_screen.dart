@@ -11,13 +11,13 @@ class PlacesListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Your places"),
+          title: const Text("Your places"),
           actions: <Widget>[
             IconButton(
                 onPressed: () {
                   Navigator.of(context).pushNamed(AddPlaceScreen.routeName);
                 },
-                icon: Icon(Icons.add))
+                icon: const Icon(Icons.add))
           ],
         ),
         body: FutureBuilder(
@@ -25,16 +25,15 @@ class PlacesListScreen extends StatelessWidget {
                 .fetchAndSetPlaces(),
             builder: ((context, snapshot) => snapshot.connectionState ==
                     ConnectionState.waiting
-                ? Center(
+                ? const Center(
                     child: CircularProgressIndicator(),
                   )
                 : Consumer<GreatPlaces>(
-                    child: Center(
+                    child: const Center(
                       child: Text("Got no places yet, start adding some!"),
                     ),
                     builder: (context, greatPlace, ch) => greatPlace
-                                .items.length <=
-                            0
+                            .items.isEmpty
                         ? ch!
                         : ListView.builder(
                             itemCount: greatPlace.items.length,

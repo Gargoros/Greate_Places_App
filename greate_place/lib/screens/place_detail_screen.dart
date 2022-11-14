@@ -19,7 +19,7 @@ class PlaceDetailScreen extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          Container(
+          SizedBox(
             height: 250,
             width: double.infinity,
             child: Image.file(
@@ -28,15 +28,15 @@ class PlaceDetailScreen extends StatelessWidget {
               width: double.infinity,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Text(
             selectedPlace.location!.address!,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 20, color: Colors.grey),
+            style: const TextStyle(fontSize: 20, color: Colors.grey),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           TextButton(
@@ -47,9 +47,9 @@ class PlaceDetailScreen extends StatelessWidget {
                         isSelecting: false,
                       ))));
             },
-            child: Text("View on Map"),
             style: TextButton.styleFrom(
                 foregroundColor: Theme.of(context).primaryColor),
+            child: const Text("View on Map"),
           )
         ],
       ),

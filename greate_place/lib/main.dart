@@ -26,10 +26,10 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.indigo,
           accentColor: Colors.amber,
         )),
-        home: PlacesListScreen(),
+        home: const PlacesListScreen(),
         routes: {
-          AddPlaceScreen.routeName: (context) => AddPlaceScreen(),
-          PlaceDetailScreen.routeName: (context) => PlaceDetailScreen(),
+          AddPlaceScreen.routeName: (context) => const AddPlaceScreen(),
+          PlaceDetailScreen.routeName: (context) => const PlaceDetailScreen(),
         },
       ),
     );

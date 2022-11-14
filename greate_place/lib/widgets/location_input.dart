@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
+// ignore: depend_on_referenced_packages
 import 'package:latlong2/latlong.dart';
 import '../helpers/location_helper.dart';
 import '../screens/map_screen.dart';
@@ -38,10 +39,11 @@ class _LocationInputState extends State<LocationInput> {
     final LatLng selectedLocation =
         await Navigator.of(context).push(MaterialPageRoute(
             fullscreenDialog: true,
-            builder: (ctx) => MapScreen(
+            builder: (ctx) => const MapScreen(
                   isSelecting: true,
                 )));
 
+    // ignore: unnecessary_null_comparison
     if (selectedLocation == null) {
       return;
     }
@@ -60,7 +62,7 @@ class _LocationInputState extends State<LocationInput> {
           height: 170,
           width: double.infinity,
           child: _previewImageUrl == null
-              ? Text(
+              ? const Text(
                   "No Location Chosen",
                   textAlign: TextAlign.center,
                 )
@@ -75,15 +77,15 @@ class _LocationInputState extends State<LocationInput> {
           children: <Widget>[
             TextButton.icon(
                 onPressed: _getCurrentUserLocation,
-                icon: Icon(Icons.location_on),
-                label: Text("Current Location"),
+                icon: const Icon(Icons.location_on),
+                label: const Text("Current Location"),
                 style: TextButton.styleFrom(
                   foregroundColor: Theme.of(context).primaryColor,
                 )),
             TextButton.icon(
               onPressed: _selectOnMap,
-              icon: Icon(Icons.map),
-              label: Text("Select on Map"),
+              icon: const Icon(Icons.map),
+              label: const Text("Select on Map"),
               style: TextButton.styleFrom(
                 foregroundColor: Theme.of(context).primaryColor,
               ),

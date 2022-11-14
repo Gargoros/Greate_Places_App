@@ -43,7 +43,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add a New place"),
+        title: const Text("Add a New place"),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -56,15 +56,15 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                 child: Column(
                   children: <Widget>[
                     TextField(
-                      decoration: InputDecoration(labelText: "Title"),
+                      decoration: const InputDecoration(labelText: "Title"),
                       controller: _titleController,
                       onSubmitted: (_) => {},
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     ImageInput(_selectImage),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     LocationInput(_selectPlace),
@@ -75,11 +75,11 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
           ),
           ElevatedButton.icon(
               onPressed: _savePlace,
-              icon: Icon(
+              icon: const Icon(
                 Icons.add,
                 color: Colors.black,
               ),
-              label: Text(
+              label: const Text(
                 "Add Place",
                 style: TextStyle(color: Colors.black),
               ),
@@ -87,8 +87,8 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                   backgroundColor: Theme.of(context).colorScheme.secondary,
                   elevation: 0,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  shape:
-                      RoundedRectangleBorder(borderRadius: BorderRadius.zero)))
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero)))
         ],
       ),
     );

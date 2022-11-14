@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+// ignore: depend_on_referenced_packages
 import 'package:latlong2/latlong.dart';
 import '../helpers/location_api_key.dart';
 import '../models/place.dart';
@@ -9,7 +10,8 @@ class MapScreen extends StatefulWidget {
   final bool isSelecting;
 
   const MapScreen(
-      {this.initialLocation =
+      {super.key,
+      this.initialLocation =
           const PlaceLocation(latitude: 53.893009, longitude: 27.567444),
       this.isSelecting = false});
 
@@ -20,6 +22,7 @@ class MapScreen extends StatefulWidget {
 class _MapScreenState extends State<MapScreen> {
   LatLng? _pickedLocation;
 
+  // ignore: unused_element
   void _selectLocation(LatLng position) {
     setState(() {
       _pickedLocation = position;
@@ -30,7 +33,7 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("You Map"),
+        title: const Text("You Map"),
         actions: <Widget>[
           if (widget.isSelecting)
             IconButton(
@@ -39,7 +42,7 @@ class _MapScreenState extends State<MapScreen> {
                     : () {
                         Navigator.of(context).pop(_pickedLocation);
                       },
-                icon: Icon(Icons.check))
+                icon: const Icon(Icons.check))
         ],
       ),
       body: FlutterMap(
@@ -59,7 +62,7 @@ class _MapScreenState extends State<MapScreen> {
           TileLayer(
             urlTemplate:
                 'https://api.mapbox.com/styles/v1/$MAPBOX_USERNAME/claa8yxh0000414plvlvair9l/tiles/256/{z}/{x}/{y}@2x?access_token=$MAPBOX_API_KEY',
-            additionalOptions: {
+            additionalOptions: const {
               'accessToken': MAPBOX_API_KEY,
               'id': 'mapbox.mapbox-streets-v8'
             },
@@ -70,7 +73,7 @@ class _MapScreenState extends State<MapScreen> {
                 : [
                     Marker(
                       point: _pickedLocation!,
-                      builder: (ctx) => Icon(
+                      builder: (ctx) => const Icon(
                         Icons.location_on_sharp,
                         size: 50,
                       ),
