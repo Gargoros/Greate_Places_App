@@ -37,7 +37,7 @@ class _MapScreenState extends State<MapScreen> {
         actions: <Widget>[
           if (widget.isSelecting)
             IconButton(
-                onPressed: _pickedLocation == null
+                onPressed: (_pickedLocation == null)
                     ? null
                     : () {
                         Navigator.of(context).pop(_pickedLocation);
@@ -68,11 +68,13 @@ class _MapScreenState extends State<MapScreen> {
             },
           ),
           MarkerLayer(
-            markers: _pickedLocation == null
+            markers: (_pickedLocation == null && widget.isSelecting)
                 ? []
                 : [
                     Marker(
-                      point: _pickedLocation!,
+                      point: (_pickedLocation ??
+                          LatLng(widget.initialLocation.latitude,
+                              widget.initialLocation.longitude)),
                       builder: (ctx) => const Icon(
                         Icons.location_on_sharp,
                         size: 50,
