@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:greate_place/helpers/location_api_key.dart';
 import 'package:latlong2/latlong.dart';
+import '../helpers/location_api_key.dart';
 import '../models/place.dart';
 
 class MapScreen extends StatefulWidget {
